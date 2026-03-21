@@ -1,0 +1,18 @@
+[package]
+name = "simple_decoder"
+version = "0.1.0"
+edition = "2024"
+authors = ["Konstantin Gorshkov <kostya_gorshkov_06@vk.com>"]
+description = "The ULTIMATE lightest audio decoding in Rust: Symphonia + Rubato under the hood."
+readme = "README.md"
+repository = "https://github.com/kostya2023/simple_decoder"
+license = "MIT"
+keywords = ["audio", "decoder", "pcm", "resample", "symphonia"]
+categories = ["multimedia::audio", "rendering"]
+exclude = ["tests/*.mp3", "tests/*.wav"] 
+
+[dependencies]
+symphonia = { version = "0.5.5", features = ["all", "opt-simd"] }
+rubato = "1.0.1"
+audioadapter-buffers = "2.0.0"
+thiserror = "2.0.18"
