@@ -1,4 +1,5 @@
 #![allow(clippy::needless_pub_self)]
+#![doc = include_str!("../README.md")]
 
 pub mod decoders;
 pub(crate) mod types;

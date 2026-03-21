@@ -76,5 +76,5 @@ let track = decoder.decode(&data)?
 
 ## Лицензия
 
-Максимально просто — [MIT](LICENSE).
+Максимально просто — [MIT](./LICENSE).
 
