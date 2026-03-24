@@ -2,14 +2,23 @@ use crate::SimpleDecoderError;
 use audioadapter_buffers::direct::InterleavedSlice;
 use rubato::{Fft, FixedSync, Indexing, Resampler};
 
+#[non_exhaustive]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum AudioFormat {
+    #[cfg(feature = "mp3")]
     MP3,
+    #[cfg(feature = "oggopus")]
     OGGOpus,
+    #[cfg(feature = "oggvorbis")]
     OGGVorbis,
+    #[cfg(feature = "aac")]
     AAC,
+    #[cfg(feature = "wav")]
     WAV,
+    #[cfg(feature = "flac")]
     FLAC,
+
+    Unknown,
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
@@ -21,6 +30,7 @@ pub struct AudioTrack {
 }
 
 impl AudioTrack {
+    #[cfg(feature = "resample")]
     pub fn resample(&self, target_rate: u64) -> Result<Self, SimpleDecoderError> {
         if self.sample_rate == target_rate {
             return Ok(self.clone());

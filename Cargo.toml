@@ -9,10 +9,22 @@ repository = "https://github.com/kostya2023/simple_decoder"
 license = "MIT"
 keywords = ["audio", "decoder", "pcm", "resample", "symphonia"]
 categories = ["multimedia::audio", "rendering"]
-exclude = ["tests/*.mp3", "tests/*.wav"] 
+exclude = ["tests/*"]
 
 [dependencies]
-symphonia = { version = "0.5.5", features = ["all", "opt-simd"] }
-rubato = "1.0.1"
-audioadapter-buffers = "2.0.0"
+symphonia = { version = "0.5.5", features = ["opt-simd"] }
 thiserror = "2.0.18"
+audioadapter-buffers = "2.0.0"
+rubato = { version = "1.0.1", optional = true }
+opus = { version = "0.3.1", optional = true }
+
+[features]
+default = ["full"]
+full = ["aac", "flac", "mp3", "oggopus", "oggvorbis", "wav", "resample"]
+aac = ["symphonia/aac"]
+flac = ["symphonia/flac"]
+mp3 = ["symphonia/mp3"]
+oggvorbis = ["symphonia/ogg", "symphonia/vorbis"]
+wav = ["symphonia/wav", "symphonia/pcm"]
+oggopus = ["symphonia/ogg", "dep:opus"]
+resample = ["dep:rubato"]
