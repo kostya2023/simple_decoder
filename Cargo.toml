@@ -1,6 +1,6 @@
 [package]
 name = "simple_decoder"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 authors = ["Konstantin Gorshkov <kostya_gorshkov_06@vk.com>"]
 description = "The ULTIMATE lightest audio decoding in Rust: Symphonia + Rubato under the hood."
